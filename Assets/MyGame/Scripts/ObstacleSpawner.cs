@@ -12,7 +12,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public float minSpawnTime, maxSpawnTime;
 
-
+    // Sets instance on Awake
     private void Awake()
     {
         if (instance == null)
@@ -21,16 +21,10 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+    // Starts the Spawn Coroutine
     void Start()
     {
         StartCoroutine("Spawn");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator Spawn()
@@ -48,7 +42,7 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
     }
-
+    //Spawns Obstacles randomly with space limitations
     void SpawnObstacle()
     {
         int random = Random.Range(0,obstacles.Length);
