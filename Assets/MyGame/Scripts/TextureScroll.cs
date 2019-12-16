@@ -9,25 +9,13 @@ public class TextureScroll : MonoBehaviour
     public bool scroll = true;
 
     Material backgroundMaterial;
-
+    // Gets renderer Component on Awake
     private void Awake()
     {
         backgroundMaterial = GetComponent<Renderer>().material;
 
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //FixedUpdate defines Texture Scroll Speed
     private void FixedUpdate()
     {
         if (scroll)
