@@ -15,31 +15,22 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    // If MousebuttonOne is Pressed, the player jumps
+    //Player must be in touch with Ground to jump
     void Update()
     {
-        if (Input.GetMouseButton(0) && !gameOver && !gameOver && !gameOver)
+        if (Input.GetMouseButton(0) )
         {
             if (grounded == true)
             {
                 jump();
             }
-
-
-
-
         }
     }
 
     bool grounded;
     bool gameOver = false;
-
+    //Defines the players jump action
     void jump()
     {
         grounded = false;
@@ -49,20 +40,19 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("Jump");
 
         GameManager.instance.IncrementScore();
-        Debug.Log("DeleteMe");
     }
-
+    //Sets the bool SetGameOverTrue to true
     private bool SetGameOverTrue()
     {
         return true;
     }
-
+    //If Player in touch with ground, grounded bool is true
     private void OnCollisionEnter2D(Collision2D collision)   {
         if(collision.gameObject.tag == "Ground")
         {
             grounded = true;}
     }
-
+    //If player hits Obstacle, Gameover is called, Obstacle is destroyed, deathanimation is played and GameOver screen/overlay is loaded
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Obstacle"){
