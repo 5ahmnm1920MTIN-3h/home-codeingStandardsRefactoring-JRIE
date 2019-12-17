@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour
 {
 Rigidbody2D rb;
 [SerializeField] private float MoveSpeed;
+private const float offset = 15f;
 //Gets the Rigidbody2D Component on Awake
 private void Awake()
 {
@@ -14,12 +15,12 @@ private void Awake()
 void Update()
 {
     //if obstacle's position x is < -15f it will be destroyed
-    if(transform.position.x < -15f)
+    if(transform.position.x < -offset)
     {
         Destroy(gameObject);
 }
         //if obstacle's position x is > 15f it will be destroyed
-        if (transform.position.x > 15f)
+        if (transform.position.x > offset)
         {
             Destroy(gameObject);
         }

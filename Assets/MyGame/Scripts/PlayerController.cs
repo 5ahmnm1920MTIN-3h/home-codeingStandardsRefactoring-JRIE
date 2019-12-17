@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     Animator anim, anim2, anim3, anim4, anim5;
     [SerializeField] float jumpForce;
     
+    private const string jumpString = "Jump";
+    private const string ground = "Ground";
+    private const string obstacle = "Obstacle";
+    private const string santaDeath = "SantaDeath";
 
     private void Awake()
     {
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = Vector2.up * jumpForce;
 
-        anim.SetTrigger("Jump");
+        anim.SetTrigger(jumpString);
 
         GameManager.instance.IncrementScore();
     }
@@ -48,17 +52,17 @@ public class PlayerController : MonoBehaviour
     }
     //If Player in touch with ground, grounded bool is true
     private void OnCollisionEnter2D(Collision2D collision)   {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == ground)
         {
             grounded = true;}
     }
     //If player hits Obstacle, Gameover is called, Obstacle is destroyed, deathanimation is played and GameOver screen/overlay is loaded
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Obstacle"){
+        if(collision.gameObject.tag == obstacle){
             GameManager.instance.GameOver();
             Destroy(collision.gameObject);
-            anim.Play("SantaDeath");
+            anim.Play(santaDeath);
             gameOver = SetGameOverTrue();
         }
     }

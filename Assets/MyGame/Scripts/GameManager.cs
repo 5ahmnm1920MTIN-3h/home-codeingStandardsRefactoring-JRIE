@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     string defaultText;
     int score = 0;
+    public const string menuScene = "MenuScene";
     //If Awake is called, it sets the instance
     private void Awake()
     {
@@ -40,12 +41,12 @@ public class GameManager : MonoBehaviour
     //If Restart is called, it loads the Main Scene
     public void Restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(MenuController.mainScene);
     }
     //If Menu is called, it loads the Menu Scene
     public void Menu()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene(menuScene);
     }
     //If IncrementScore is called, adds 1 to the score and converts it into a String
     public void IncrementScore()
